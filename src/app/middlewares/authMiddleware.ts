@@ -15,7 +15,7 @@ export default function authMiddleware(
 	const token = authorization.replace("Bearer", "").trim();
 
 	try {
-		const data = jwt.verify(token, "secret");
+		const data = jwt.verify(token, process.env.SECRET_JWT);
 
 		console.log(data);
 	} catch {

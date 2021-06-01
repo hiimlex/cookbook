@@ -3,6 +3,8 @@ import routes from "./routes";
 import "reflect-metadata";
 import "./database/connect";
 
+require("dotenv/config");
+
 const app = express();
 
 app.use(express.json());
