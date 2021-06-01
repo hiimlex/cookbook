@@ -10,3 +10,4 @@
 - Jwt Auth <b>DONE</b>
 - Deploy to heroku
 - Favorite
+- Recover password with mailer
