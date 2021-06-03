@@ -1,6 +1,6 @@
 module.exports = {
 	type: "postgres",
-	url: process.env.DATABASE_URL_SSL,
+	url: process.env.DATABASE_URL,
 	extra: {
 		ssl: process.env.SSL,
 	},
