@@ -1,9 +1,9 @@
 import {
+	BeforeInsert,
+	BeforeUpdate,
 	Column,
 	Entity,
 	PrimaryGeneratedColumn,
-	BeforeInsert,
-	BeforeUpdate,
 } from "typeorm";
 import bcrypt from "bcryptjs";
 import salt from "../utils/salt";
