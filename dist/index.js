@@ -11,4 +11,6 @@ require("dotenv/config");
 var app = express_1.default();
 app.use(express_1.default.json());
 app.use(routes_1.default);
-app.listen(4200, function () { return console.log("Server running at http://localhost:4200"); });
+app.listen(process.env.APP_PORT || 4200, function () {
+    return console.log("Server running at http://localhost:4200");
+});
