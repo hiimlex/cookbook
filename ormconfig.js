@@ -3,6 +3,7 @@ module.exports = {
 	host: process.env.HOST,
 	port: process.env.PORT,
 	username: process.env.USERNAME,
+	ssl: true,
 	password: process.env.PASSWORD,
 	database: process.env.DATABASE,
 	entities: ["dist/app/models/*.js"],
