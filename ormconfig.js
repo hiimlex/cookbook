@@ -5,11 +5,8 @@ module.exports = {
 	username: process.env.USERNAME,
 	synchronize: true,
 	logging: true,
-	ssl: true,
 	extra: {
-		ssl: {
-			rejectUnauthorized: false,
-		},
+		ssl: true,
 	},
 	password: process.env.PASSWORD,
 	database: process.env.DATABASE,
