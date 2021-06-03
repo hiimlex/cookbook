@@ -1,3 +1,7 @@
 import { createConnection } from "typeorm";
 
-createConnection().then(() => console.log("Success connected"));
+try {
+	createConnection().then(() => console.log("Success connected"));
+} catch (err) {
+	throw new Error(err);
+}
