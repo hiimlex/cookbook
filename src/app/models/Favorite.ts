@@ -1,18 +1,22 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import User from "./User";
 
 @Entity("favorites")
 class Favorite {
-	@PrimaryGeneratedColumn()
-	id: string;
+	@PrimaryGeneratedColumn("increment")
+	id: number;
 
 	@Column()
-	joke_id: number;
+	jokeID: number;
 
 	@Column()
 	ask: string;
 
 	@Column()
 	answer: string;
+
+	@ManyToOne((type) => User, (user) => user.id)
+	userid: User[];
 }
 
 export default Favorite;

@@ -3,14 +3,16 @@ import {
 	BeforeUpdate,
 	Column,
 	Entity,
+	OneToMany,
 	PrimaryGeneratedColumn,
 } from "typeorm";
 import bcrypt from "bcryptjs";
 import salt from "../utils/salt";
+import Favorite from "./Favorite";
 
 @Entity("users")
 class User {
-	@PrimaryGeneratedColumn()
+	@PrimaryGeneratedColumn('uuid')
 	id: string;
 
 	@Column()
@@ -24,6 +26,9 @@ class User {
 	hashPassword() {
 		this.password = bcrypt.hashSync(this.password, salt);
 	}
+
+	@OneToMany(()=> Favorite, favorite => favorite.userid)
+	favorites: Favorite[];
 }
 
 export default User;

@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateFavoritesTable1622770904106 implements MigrationInterface {
+export class CreateFavoritesTable1622825488919 implements MigrationInterface {
 	public async up(queryRunner: QueryRunner): Promise<void> {
 		await queryRunner.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
 
@@ -10,14 +10,24 @@ export class CreateFavoritesTable1622770904106 implements MigrationInterface {
 				columns: [
 					{
 						name: "id",
-						type: "uuid",
+						type: "int",
 						isPrimary: true,
-						generationStrategy: "uuid",
-						default: "uuid_generate_v4()",
+						isUnique: true,
+						generationStrategy: "increment",
 					},
-					{ name: "joke_id", type: "int", isUnique: true },
-					{ name: "ask", type: "varchar" },
-					{ name: "answer", type: "varchar" },
+					{
+						name: "jokeID",
+						type: "int",
+						isUnique: true,
+					},
+					{
+						name: "ask",
+						type: "varchar",
+					},
+					{
+						name: "answer",
+						type: "varchar",
+					},
 				],
 			})
 		);
