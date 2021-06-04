@@ -1,4 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var typeorm_1 = require("typeorm");
-typeorm_1.createConnection().then(function () { return console.log("Success connected"); });
+try {
+    typeorm_1.createConnection().then(function () { return console.log("Success connected"); });
+}
+catch (err) {
+    throw new Error(err);
+}
