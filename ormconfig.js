@@ -1,7 +1,7 @@
 module.exports = {
 	type: "postgres",
-	url: process.env.DATABASE_URL,
-	entities: ["dist/app/models/*.js"],
-	migrations: ["dist/database/migrations/*.js"],
+	url: "postgres://postgres:postgres@localhost:5432/cookbook",
+	entities: ["src/app/models/*.ts"],
+	migrations: ["src/database/migrations/*.ts"],
 	cli: { migrationsDir: "src/database/migrations" },
 };
