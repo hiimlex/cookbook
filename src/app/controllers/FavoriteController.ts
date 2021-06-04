@@ -63,14 +63,6 @@ class FavoriteController {
 			throw new Error(err);
 		}
 	}
-
-	async opa(req: Request, res: Response) {
-		try {
-			return res.send({ oi: "oi" });
-		} catch (err) {
-			return res.send();
-		}
-	}
 }
 
 export default new FavoriteController();

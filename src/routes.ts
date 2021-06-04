@@ -14,7 +14,6 @@ router.delete("/users/:id", UserController.delete);
 
 router.put("/users/:id/favorite", authMiddleware, FavoriteController.store);
 router.get("/users/favorite/:id", authMiddleware, FavoriteController.index);
-router.get("/teste", FavoriteController.opa);
 
 router.post("/auth", AuthController.authenticate);
 
