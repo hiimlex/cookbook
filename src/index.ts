@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(routes);
 
-const server = app.listen(4200, () =>
+const server = app.listen(process.env.PORT || 4200, () =>
 	console.log("Server running at http://localhost:4200")
 );
 

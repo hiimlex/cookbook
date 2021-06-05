@@ -1,9 +1,11 @@
 module.exports = {
 	type: "postgres",
-	url: "postgres://postgres:postgres@localhost:5432/cookbook",
-	logging: true,
+	url: process.env.DATABASE_URL,
 	synchronize: true,
-	entities: ["src/app/models/*.ts"],
-	migrations: ["src/database/migrations/*.ts"],
+	ssl: {
+		rejectUnauthorized: false,
+	},
+	entities: ["dist/app/models/*.js"],
+	migrations: ["dist/database/migrations/*.js"],
 	cli: { migrationsDir: "src/database/migrations" },
 };
