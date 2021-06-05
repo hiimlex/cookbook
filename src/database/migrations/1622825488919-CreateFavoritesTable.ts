@@ -2,8 +2,6 @@ import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
 export class CreateFavoritesTable1622825488919 implements MigrationInterface {
 	public async up(queryRunner: QueryRunner): Promise<void> {
-		await queryRunner.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
-
 		await queryRunner.createTable(
 			new Table({
 				name: "favorites",
@@ -21,13 +19,14 @@ export class CreateFavoritesTable1622825488919 implements MigrationInterface {
 						isUnique: true,
 					},
 					{
-						name: "ask",
+						name: "setup",
 						type: "varchar",
 					},
 					{
-						name: "answer",
+						name: "punchline",
 						type: "varchar",
 					},
+					{ name: "type", type: "varchar" },
 				],
 			})
 		);
@@ -35,6 +34,5 @@ export class CreateFavoritesTable1622825488919 implements MigrationInterface {
 
 	public async down(queryRunner: QueryRunner): Promise<void> {
 		await queryRunner.dropTable("favorites");
-		await queryRunner.query('DROP EXTENSION "uuid-ossp"');
 	}
 }

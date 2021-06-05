@@ -1,10 +1,9 @@
-import { Request, Response } from "express";
+import { Request, response, Response } from "express";
 import { getRepository } from "typeorm";
 
 import User from "../models/User";
 import Favorite from "../models/Favorite";
 
-import https from "https";
 class FavoriteController {
 	async store(req: Request, res: Response) {
 		try {
@@ -25,11 +24,15 @@ class FavoriteController {
 
 			const joke = req.body;
 
+			if (!joke) {
+				return res.sendStatus(402);
+			}
+
 			const favorite = await repository.create({ ...joke, userid });
 
 			await repository.save(favorite);
 
-			return res.json({ favorite });
+			return res.status(200).json({ favorite });
 		} catch (err) {
 			throw new Error(err);
 		}
@@ -58,7 +61,38 @@ class FavoriteController {
 				return res.sendStatus(404);
 			}
 
-			return res.json({ favorites: allFavorites });
+			return res.status(200).json({ favorites: allFavorites });
+		} catch (err) {
+			throw new Error(err);
+		}
+	}
+
+	async delete(req: Request, res: Response) {
+		try {
+			const repository = getRepository(Favorite);
+			const userRepository = getRepository(User);
+
+			const userid = req.params.id;
+			const jokeID = req.query;
+
+			if (!userid || !jokeID) {
+				res.sendStatus(404);
+			}
+
+			const verify = await userRepository.findOne(userid);
+			const verifyJoke = await repository.findOne(jokeID);
+
+			if (!verify) {
+				return res.sendStatus(403);
+			}
+
+			if (!verifyJoke) {
+				res.sendStatus(402);
+			}
+
+			await repository.delete(jokeID);
+
+			return res.sendStatus(200);
 		} catch (err) {
 			throw new Error(err);
 		}

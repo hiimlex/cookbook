@@ -21,7 +21,7 @@ class UserController {
 			const user = repository.create({ email, password });
 			await repository.save(user);
 
-			return res.json(user);
+			return res.status(200).json(user);
 		} catch (err) {
 			throw new Error(err);
 		}
@@ -34,10 +34,10 @@ class UserController {
 			const allUsers = await repository.find();
 
 			if (!allUsers) {
-				return res.json({});
+				return res.status(204).json({});
 			}
 
-			return res.json({ users: allUsers });
+			return res.status(200).json({ users: allUsers });
 		} catch (err) {
 			throw new Error(err);
 		}
@@ -55,7 +55,7 @@ class UserController {
 				return res.sendStatus(404);
 			}
 
-			return res.json({ user: user });
+			return res.status(200).json({ user: user });
 		} catch (err) {
 			throw new Error(err);
 		}
@@ -103,7 +103,7 @@ class UserController {
 
 			const results = await repository.save(user);
 
-			return res.json(results);
+			return res.status(200).json(results);
 		} catch (err) {
 			throw new Error(err);
 		}

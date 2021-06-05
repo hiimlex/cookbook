@@ -32,7 +32,7 @@ class AuthController {
 
 			delete user.password;
 
-			res.json({
+			res.status(200).json({
 				user,
 				token,
 			});

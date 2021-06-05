@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { query, Router } from "express";
 import AuthController from "./app/controllers/AuthController";
 import UserController from "./app/controllers/UserController";
 import authMiddleware from "./app/middlewares/authMiddleware";
@@ -14,6 +14,7 @@ router.delete("/users/:id", UserController.delete);
 
 router.put("/users/:id/favorite", authMiddleware, FavoriteController.store);
 router.get("/users/favorite/:id", authMiddleware, FavoriteController.index);
+router.delete("/users/favorite/:id", authMiddleware, FavoriteController.delete);
 
 router.post("/auth", AuthController.authenticate);
 
