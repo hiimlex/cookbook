@@ -1,7 +1,9 @@
 import express from "express";
 import routes from "./routes";
 import "reflect-metadata";
-import "./database/connect";
+import connection from ".//database/connect";
+
+connection.create();
 
 require("dotenv/config");
 
@@ -19,8 +21,11 @@ process.on("SIGINT", shutDown);
 
 function shutDown() {
 	console.log("REceived kill signal, shutting down gracefully");
+	connection.close();
+	connection.clear();
 	server.close(() => {
 		console.log("Closed out remaining connections");
+
 		process.exit(0);
 	});
 
