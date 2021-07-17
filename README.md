@@ -1,6 +1,5 @@
-# Cuucker project API
-
-### Cooking API
+# Cuucker project API 
+Basic API, using [TypeScript](https://www.typescriptlang.org/), [Express](https://github.com/expressjs/express), [TypeORM](https://typeorm.io/#/)
 
 //TODO
 
